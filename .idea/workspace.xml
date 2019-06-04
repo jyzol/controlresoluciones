@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95e0f12b-8047-4613-b9c3-9d6f27ab1729" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resoluciones/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/resoluciones/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resoluciones/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/resoluciones/admin.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,8 +47,8 @@
         <option value="$PROJECT_DIR$/acreditacion/views.py" />
         <option value="$PROJECT_DIR$/acreditacion/urls.py" />
         <option value="$PROJECT_DIR$/acreditacion/settings.py" />
-        <option value="$PROJECT_DIR$/resoluciones/admin.py" />
         <option value="$PROJECT_DIR$/resoluciones/models.py" />
+        <option value="$PROJECT_DIR$/resoluciones/admin.py" />
       </list>
     </option>
   </component>
@@ -145,17 +144,17 @@
       <updated>1559369238026</updated>
       <workItem from="1559369239582" duration="5204000" />
       <workItem from="1559522900392" duration="9027000" />
-      <workItem from="1559615690789" duration="5209000" />
+      <workItem from="1559615690789" duration="8011000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19440000" />
+    <option name="totallyTimeSpent" value="22242000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="761" y="0" width="782" height="831" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25761774" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25761774" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -224,14 +223,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resoluciones/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="32" lean-forward="true" selection-start-column="32" selection-end-column="32" />
+        <state relative-caret-position="440">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resoluciones/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
+        <state relative-caret-position="300">
           <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
         </state>
       </provider>
