@@ -5,7 +5,7 @@ from resoluciones.models import Resolucion
 
 
 def home(request):
-    return render(request, 'resolucion/index.html',
+    return render(request, 'resolucion/index_p.html',
                   {'resoluciones': Resolucion.objects.count(),
                    'dato': 22})
 
@@ -16,7 +16,18 @@ def resolucion_list(request):
     resoluciones = Resolucion.objects.filter(
         tipo_elevacion='Conocimiento'
     )
-    return render(request, 'resolucion/resolucion_list.html',
+    return render(request, 'resolucion/resolucion_list_p.html',
+                  {'resoluciones': resoluciones})
+
+
+def inicio(request):
+    return render(request, 'resolucion/inicio.html')
+
+
+def tabla(request):
+    resoluciones = Resolucion.objects.all()
+
+    return render(request, 'resolucion/tabla.html',
                   {'resoluciones': resoluciones})
 
 
