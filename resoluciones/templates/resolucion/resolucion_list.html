@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} Resoluciones {% endblock %}
+{% block content %}
+    <ul>
+        {% for r in resoluciones %}
+        <li>
+            Numero: {{ r.nro_resolucion }}
+            Facultad: {{ r.facultad_resolucion }}
+            Fecha: {{ r.fecha_resolucion }}
+            Descripcion: {{ r.descripcion_resolucion }}
+            Elevacion: {{ r.tipo_elevacion }}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

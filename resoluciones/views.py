@@ -16,7 +16,7 @@ def resolucion_list(request):
     resoluciones = Resolucion.objects.filter(
         tipo_elevacion='Conocimiento'
     )
-    return render(request, 'resolucion/index.html',
+    return render(request, 'resolucion/resolucion_list.html',
                   {'resoluciones': resoluciones})
 
 
