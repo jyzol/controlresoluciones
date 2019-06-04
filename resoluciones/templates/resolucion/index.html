@@ -6,6 +6,17 @@
 </head>
 <body>
     <h1>Vista home Resoluciones</h1>
-    <p>Django project</p>
+    <!--<p>Tenemos estas Resoluciones: {{ resoluciones }}, Dato: {{ dato }}</p>-->
+    <ul>
+        {% for r in resoluciones %}
+        <li>
+            Numero: {{ r.nro_resolucion }}
+            Facultad: {{ r.facultad_resolucion }}
+            Fecha: {{ r.fecha_resolucion }}
+            Descripcion: {{ r.descripcion_resolucion }}
+            Elevacion: {{ r.tipo_elevacion }}
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
