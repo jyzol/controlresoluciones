@@ -33,11 +33,10 @@ class Resolucion(models.Model):
     # proviene_resolucion = models.ForeignKey(Resolucion, on_delete=models.CASCADE,null=True)
     fecha_resolucion = models.DateField()
     link_descarga = models.CharField(max_length=100)
-    descripcion_resolucion = models.TextField
-    anio_resolucion = models.CharField(max_length=4)
     estado_resolucion = models.CharField(max_length=20)
-    observacion = models.TextField()
-    adjunto = models.CharField(max_length=100)
+    descripcion_resolucion = models.TextField(default='obs')
+    observacion_resolucion = models.TextField()
+    adjunto_resolucion = models.CharField(max_length=100)
     tipo_elevacion = models.CharField(max_length=50)
 
     class Meta:
