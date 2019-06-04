@@ -4,9 +4,14 @@ from django.db import models
 
 
 class Facultad(models.Model):
+    FACS = (
+        ('fii', 'FII'),
+        ('fiee','FIEE'),
+        ('fisi','FISI')
+    )
     id_facultad = models.CharField(max_length=3, primary_key=True)
     nombre_facultad = models.CharField(max_length=100)
-    abreviatura_facultad = models.CharField(max_length=6)
+    abreviatura_facultad = models.CharField(max_length=6, choices=FACS)
 
     def __str__(self):
         return self.abreviatura_facultad
@@ -25,6 +30,7 @@ class Dependencia(models.Model):
 class Resolucion(models.Model):
     nro_resolucion = models.CharField(max_length=5, primary_key=True)
     facultad_resolucion = models.ForeignKey(Facultad, on_delete=models.CASCADE)
+    # proviene_resolucion = models.ForeignKey(Resolucion, on_delete=models.CASCADE,null=True)
     fecha_resolucion = models.DateField()
     link_descarga = models.CharField(max_length=100)
     descripcion_resolucion = models.TextField
