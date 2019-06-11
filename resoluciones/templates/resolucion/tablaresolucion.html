@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %} Resoluciones - Tabla {% endblock %}
+{% block content %}
+    {% load staticfiles %}
+    <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+            <p class="mb-4">
+                <a href="{% url 'nuevoresolucion' %}" class="btn btn-primary btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-pen"></i>
+                    </span>
+                    <span class="text">Agregar resolución</span>
+                </a>
+            </p>
+
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Numero</th>
+                      <th>Facultad</th>
+                      <th>Fecha</th>
+                      <th>Descripcion</th>
+                      <th>Elevacion</th>
+                    </tr>
+                  </thead>
+                <!--
+                  <tfoot>
+                    <tr>
+                      <th>Numero</th>
+                      <th>Facultad</th>
+                      <th>Fecha</th>
+                      <th>Descripcion</th>
+                      <th>Elevacion</th>
+                    </tr>
+                  </tfoot>
+                  -->
+                  <tbody>
+
+                  {% for r in resoluciones %}
+                    <tr>
+                      <td>{{ r.nro_resolucion }}</td>
+                      <td>{{ r.facultad_resolucion }}</td>
+                      <td>{{ r.fecha_resolucion }}</td>
+                      <td>{{ r.descripcion_resolucion }}</td>
+                      <td>{{ r.tipo_elevacion }}</td>
+                    </tr>
+                  {% endfor %}
+
+
+
+
+                    <!--<tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>Edinburgh</td>
+                      <td>61</td>
+                      <td>2011/04/25</td>
+                      <td>$320,800</td>
+                    </tr>-->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+{% endblock %}
+{% block scripts %}
+<!-- Page level plugins -->
+  <script src="{% static 'resoluciones/vendor/datatables/jquery.dataTables.min.js' %}"></script>
+  <script src="{% static 'resoluciones/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{% static 'resoluciones/js/demo/datatables-demo.js' %}"></script>
+{% endblock %}

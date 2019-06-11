@@ -123,10 +123,23 @@
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'tabla' %}">
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTables" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+          <span>Tablas</span>
+        </a>
+        <div id="collapseTables" class="collapse" aria-labelledby="headingTables" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Listado:</h6>
+            <a class="collapse-item" href="{% url 'tablaresolucion' %}">Resoluciones</a>
+            <a class="collapse-item" href="{% url 'tablaresolutivo' %}">Resolutivos</a>
+            <a class="collapse-item" href="{% url 'tablaconsiderando' %}">Considerandos</a>
+              <a class="collapse-item" href="{% url 'tablaexpediente' %}">Expedientes</a>
+              <a class="collapse-item" href="{% url 'tablafacultad' %}">Facultades</a>
+              <a class="collapse-item" href="{% url 'tabladependencia' %}">Dependencias</a>
+              <a class="collapse-item" href="{% url 'tablapersona' %}">Personas</a>
+          </div>
+        </div>
       </li>
 
       <!-- Divider -->
