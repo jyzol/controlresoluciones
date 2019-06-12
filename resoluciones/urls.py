@@ -3,11 +3,12 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('inicio', inicio, name='inicio'),
+    path('', inicio, name='inicio'),
 
     path('resolucion/tabla', tablaresolucion, name='tablaresolucion'),
     path('resolucion/nuevo', nuevoresolucion, name='nuevoresolucion'),
     path('resolucion/editar', editarresolucion, name='editarresolucion'),
+    path('resolucion/eliminar', eliminarresolucion, name='eliminarresolucion'),
 
     path('considerando/tabla', tablaconsiderando, name='tablaconsiderando'),
     path('considerando/nuevo', nuevoconsiderando, name='nuevoconsiderando'),

@@ -20,7 +20,7 @@ def nuevoresolucion(request):
         if form.is_valid():
             resolucion = form.save(commit=False)
             resolucion.save()
-            redirect('tabla')
+            return redirect('tablaresolucion')
     else:
         form = ResolucionForm
 
@@ -29,8 +29,21 @@ def nuevoresolucion(request):
 def editarresolucion(request):
     return render(request,'resolucion/editarresolucion.html')
 
-'considerando'
+def eliminarresolucion(request):
+    if request.method == "GET":
+        gett = request.GET.get('nro')
+        if gett is not None:
+                try:
+                    res = Resolucion.objects.get(nro_resolucion=gett)
+                    res.delete()
+                except Resolucion.DoesNotExist:
+                    res = None
+        return redirect('tablaresolucion')
 
+    return render(request, 'resolucion/eliminarresolucion.html')
+
+
+'considerando'
 def tablaconsiderando(request):
     considerandos = Considerando.objects.all()
     return render(request, 'resolucion/tablaconsiderando.html',
