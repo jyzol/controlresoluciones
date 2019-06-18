@@ -27,20 +27,47 @@ def nuevoresolucion(request):
     return render(request, 'resolucion/nuevoresolucion.html', {'form':form})
 
 def editarresolucion(request):
-    return render(request,'resolucion/editarresolucion.html')
+    if request.method == "POST":
+        form = ResolucionForm(request.POST)
+        #post_nro = request.POST['nro']
+        #post_nro = request.POST.get('nro',False)
+        if request.POST.get('nro',False) is not None:
+                try:
+                    post_nro = request.POST.get('nro',False)
+                    res = Resolucion.objects.get(nro_resolucion=post_nro)
+                    form.fields['nro_resolucion'].initial = res.nro_resolucion
+                    form.fields['facultad_resolucion'].initial = res.facultad_resolucion
+                    form.fields['fecha_resolucion'].initial = res.fecha_resolucion.strftime("%Y-%m-%d")
+                    form.fields['link_descarga'].initial = res.link_descarga
+                    form.fields['estado_resolucion'].initial = res.estado_resolucion
+                    form.fields['adjunto_resolucion'].initial = res.adjunto_resolucion
+                    form.fields['tipo_elevacion'].initial = res.tipo_elevacion
+                except Resolucion.DoesNotExist:
+                    res = None
+                if form.is_valid():
+                    resolucion = form
+                    resolucion.save()
+                    return redirect('tablaresolucion')
+    else:
+        form = ResolucionForm
+
+    return render(request,'resolucion/editarresolucion.html',{'form':form, 'res':res},)
 
 def eliminarresolucion(request):
-    if request.method == "GET":
-        gett = request.GET.get('nro')
-        if gett is not None:
+    post_nro = '00000'
+    if request.method == "POST":
+        postt = request.POST['nro']
+        if postt is not None:
                 try:
-                    res = Resolucion.objects.get(nro_resolucion=gett)
+                    res = Resolucion.objects.get(nro_resolucion=postt)
                     res.delete()
                 except Resolucion.DoesNotExist:
                     res = None
         return redirect('tablaresolucion')
+    else:
+        return redirect('tablaresolucion')
 
-    return render(request, 'resolucion/eliminarresolucion.html')
+    #return render(request, 'resolucion/eliminarresolucion.html')
 
 
 'considerando'

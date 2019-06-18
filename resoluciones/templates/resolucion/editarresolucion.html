@@ -1,38 +1,48 @@
 {% extends 'base.html' %}
-{% block title %} Resoluciones - Insertar {% endblock %}
+{% block title %} Resoluciones - Editar {% endblock %}
+{% load widget_tweaks %}
 {% block content %}
     {% load staticfiles %}
     <!-- Begin Page Content -->
     <div class="container-fluid">
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            <h1 class="h3 mb-0 text-gray-800">Editar Resolución Nro {{ res.nro_resolucion }}</h1>
           </div>
           <div class="row">
+
               <div class="col-lg-3"></div>
               <div class="col-lg-6">
-                  <form method="POST" action="#" class="align-items-center">{% csrf_token %}
-                      <!--
-                      <label for="nro_resolucion">
-                          Número de resolución
-                      </label>
-                    <div class="form-group">
-                          <input type="text" class="form-control form-control-user" id="nro_resolucion" name="nro_resolucion" placeholder="Ingresar Nro resolucion...">
-                    </div>-->
-                      {{ form.as_p }}
-                      <div class="form-group text-center">
-                          <input type="submit" value="Ingresar" class="btn btn-success">
+
+                  <form method="POST" action="#" class="align-items-center form-inline">{% csrf_token %}
+                      {% for field in form %}
+                          <div class="form-group">
+                          {% with valor="value:"|add:field.initial %}
+                              {{ field.label_tag }} {{ field|add_class:"form-control m-2"|attr:valor }}
+                          {% endwith %}
+                          </div>
+                      {% endfor %}
+                      <div class="d-block text-center">
+                          <input type="submit" value="Actualizar" class="btn btn-success">
                       </div>
-
                   </form>
-
               </div>
               <div class="col-lg-3"></div>
           </div>
-
         </div>
+
     <!-- /.container-fluid -->
+    <script type="text/javascript">
+        document.getElementById('id_descripcion_resolucion').value = '{{ res.descripcion_resolucion }}'
+        document.getElementById('id_observacion_resolucion').value = '{{ res.observacion_resolucion }}'
+        arr = document.getElementsByTagName('option')
+        for(var i=0;i<arr.length;i++){
+           if(arr[i].innerHTML==='{{ res.facultad_resolucion }}') {
+               arr[0].selected=false
+               arr[i].selected=true
+           }
+        }
+    </script>
 {% endblock %}
 {% block scripts %}
 <!-- Page level plugins -->
