@@ -9,6 +9,8 @@ urlpatterns = [
     path('resolucion/nuevo', nuevoresolucion, name='nuevoresolucion'),
     path('resolucion/editar', editarresolucion, name='editarresolucion'),
     path('resolucion/eliminar', eliminarresolucion, name='eliminarresolucion'),
+    path('resolucion/edit', ResolucionEdit.as_view(), name='resolucionedit'),
+
 
     path('considerando/tabla', tablaconsiderando, name='tablaconsiderando'),
     path('considerando/nuevo', nuevoconsiderando, name='nuevoconsiderando'),

@@ -14,7 +14,7 @@
               <div class="col-lg-3"></div>
               <div class="col-lg-6">
 
-                  <form method="POST" action="#" class="align-items-center form-inline">{% csrf_token %}
+                  <form method="POST" action="{% url 'editarresolucion' %}" class="align-items-center form-inline">{% csrf_token %}
                       {% for field in form %}
                           <div class="form-group">
                           {% with valor="value:"|add:field.initial %}
@@ -26,12 +26,28 @@
                           <input type="submit" value="Actualizar" class="btn btn-success">
                       </div>
                   </form>
+
+              <!--
+              <form method="POST" action="#" class="align-items-center form-inline">{% csrf_token %}
+                      {% for field in form %}
+                          {{ field.errors }}
+                          <div class="form-group">
+                              {{ field.label_tag }} {{ field|add_class:"form-control m-2" }}
+                          </div>
+                      {% endfor %}
+                      <div class="d-block text-center">
+                          <input type="submit" value="Ingresar" class="btn btn-success">
+                      </div>
+
+                  </form>
+                  -->
               </div>
               <div class="col-lg-3"></div>
           </div>
         </div>
 
     <!-- /.container-fluid -->
+
     <script type="text/javascript">
         document.getElementById('id_descripcion_resolucion').value = '{{ res.descripcion_resolucion }}'
         document.getElementById('id_observacion_resolucion').value = '{{ res.observacion_resolucion }}'
@@ -43,6 +59,7 @@
            }
         }
     </script>
+
 {% endblock %}
 {% block scripts %}
 <!-- Page level plugins -->

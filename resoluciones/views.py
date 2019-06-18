@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.views.generic import UpdateView
 
 from resoluciones.forms import *
 from resoluciones.models import *
@@ -44,14 +46,23 @@ def editarresolucion(request):
                     form.fields['tipo_elevacion'].initial = res.tipo_elevacion
                 except Resolucion.DoesNotExist:
                     res = None
-                if form.is_valid():
-                    resolucion = form
-                    resolucion.save()
-                    return redirect('tablaresolucion')
+        if form.is_valid():
+            resolucion = form.save(commit=False)
+            resolucion.save()
+            return redirect('tablaresolucion')
     else:
         form = ResolucionForm
 
     return render(request,'resolucion/editarresolucion.html',{'form':form, 'res':res},)
+
+class ResolucionEdit(UpdateView):
+    model = Resolucion
+    form_class = ResolucionForm
+    template_name = 'resolucion/editarresolucion.html'
+
+    def get_success_url(self):
+        return reverse('tablaresolucion')
+
 
 def eliminarresolucion(request):
     post_nro = '00000'
