@@ -34,6 +34,7 @@ def nuevoresolucion(request):
 
     return render(request, 'resolucion/nuevoresolucion.html', {'form':form})
 
+
 def editarresolucion(request):
     if request.method == "POST":
         form = ResolucionForm(request.POST)
@@ -50,24 +51,27 @@ def editarresolucion(request):
 
     return render(request,'resolucion/editarresolucion.html',{'form':form, 'res':res},)
 
+
 def resolucionedit(request):
     if request.method == "POST":
         post_nro = request.POST.get('nro_resolucion',False)
         res = Resolucion.objects.get(nro_resolucion=post_nro)
-        res.delete()
-        form = ResolucionForm(request.POST)
-        if form.is_valid():
-            resolucion = form.save(commit=False)
-            resolucion.save()
-            return redirect('tablaresolucion')
-    else:
-        form = ResolucionForm
+        res.nro_resolucion = request.POST.get('nro_resolucion',False)
+        res.facultad_resolucion = Facultad.objects.get(id_facultad=request.POST.get('facultad_resolucion',False))
+        res.fecha_resolucion = request.POST.get('fecha_resolucion',False)
+        res.link_descarga = request.POST.get('link_descarga',False)
+        res.estado_resolucion = request.POST.get('estado_resolucion',False)
+        res.descripcion_resolucion = request.POST.get('descripcion_resolucion',False)
+        res.observacion_resolucion = request.POST.get('observacion_resolucion', False)
+        res.adjunto_resolucion = request.POST.get('adjunto_resolucion', False)
+        res.tipo_elevacion = request.POST.get('tipo_elevacion', False)
+        res.save()
+        return redirect('tablaresolucion')
 
-    return render(request, 'resolucion/editarresolucion.html', {'form':form})
+    return render(request, 'resolucion/editarresolucion.html',)
 
 
 def eliminarresolucion(request):
-    post_nro = '00000'
     if request.method == "POST":
         postt = request.POST['nro']
         if postt is not None:
@@ -79,8 +83,6 @@ def eliminarresolucion(request):
         return redirect('tablaresolucion')
     else:
         return redirect('tablaresolucion')
-
-    #return render(request, 'resolucion/eliminarresolucion.html')
 
 
 'considerando'
