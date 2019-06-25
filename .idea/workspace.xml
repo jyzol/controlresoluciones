@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="95e0f12b-8047-4613-b9c3-9d6f27ab1729" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resoluciones/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/resoluciones/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resoluciones/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/resoluciones/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resoluciones/templates/resolucion/editarresolucion.html" beforeDir="false" afterPath="$PROJECT_DIR$/resoluciones/templates/resolucion/editarresolucion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resoluciones/templates/resolucion/tablaresolucion.html" beforeDir="false" afterPath="$PROJECT_DIR$/resoluciones/templates/resolucion/tablaresolucion.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resoluciones/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/resoluciones/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resoluciones/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/resoluciones/views.py" afterDir="false" />
     </list>
@@ -31,7 +35,7 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resoluciones/forms.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -44,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resoluciones/templates/resolucion/tablaresolucion.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="59" column="132" selection-start-line="59" selection-start-column="132" selection-end-line="59" selection-end-column="132" />
+            <state relative-caret-position="300">
+              <caret line="87" column="38" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -56,17 +60,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resoluciones/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="40" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="40" />
+            <state relative-caret-position="-240">
+              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resoluciones/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+            <state relative-caret-position="420">
+              <caret line="21" column="104" selection-start-line="21" selection-start-column="104" selection-end-line="21" selection-end-column="104" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -77,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resoluciones/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+            <state relative-caret-position="200">
+              <caret line="10" column="67" selection-start-line="10" selection-start-column="67" selection-end-line="10" selection-end-column="67" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -89,8 +93,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resoluciones/templates/resolucion/editarresolucion.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="-2">
+              <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -98,8 +102,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resoluciones/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="34" column="51" lean-forward="true" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+            <state relative-caret-position="-220">
+              <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resoluciones/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="12" column="57" lean-forward="true" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,7 +137,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/acreditacion/views.py" />
-        <option value="$PROJECT_DIR$/resoluciones/models.py" />
         <option value="$PROJECT_DIR$/resoluciones/admin.py" />
         <option value="$PROJECT_DIR$/resoluciones/templates/resolucion/index.html" />
         <option value="$PROJECT_DIR$/resoluciones/static/style.css" />
@@ -147,21 +162,22 @@
         <option value="$PROJECT_DIR$/resoluciones/templates/resolucion/nuevopersona.html" />
         <option value="$PROJECT_DIR$/resoluciones/templates/resolucion/editarpersona.html" />
         <option value="$PROJECT_DIR$/acreditacion/urls.py" />
-        <option value="$PROJECT_DIR$/resoluciones/templates/base.html" />
-        <option value="$PROJECT_DIR$/resoluciones/templates/resolucion/inicio.html" />
         <option value="$PROJECT_DIR$/resoluciones/templates/resolucion/eliminarresolucion.html" />
         <option value="$PROJECT_DIR$/resoluciones/templates/resolucion/tablaresolutivo.html" />
         <option value="$PROJECT_DIR$/acreditacion/settings.py" />
         <option value="$PROJECT_DIR$/resoluciones/templates/resolucion/nuevoresolucion.html" />
         <option value="$PROJECT_DIR$/resoluciones/forms.py" />
         <option value="$PROJECT_DIR$/resoluciones/urls.py" />
-        <option value="$PROJECT_DIR$/resoluciones/templates/resolucion/tablaresolucion.html" />
         <option value="$PROJECT_DIR$/resoluciones/templates/resolucion/editarresolucion.html" />
+        <option value="$PROJECT_DIR$/resoluciones/templates/base.html" />
+        <option value="$PROJECT_DIR$/resoluciones/templates/resolucion/inicio.html" />
+        <option value="$PROJECT_DIR$/resoluciones/models.py" />
         <option value="$PROJECT_DIR$/resoluciones/views.py" />
+        <option value="$PROJECT_DIR$/resoluciones/templates/resolucion/tablaresolucion.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="952" />
     <option name="width" value="977" />
     <option name="height" value="1038" />
@@ -189,12 +205,6 @@
               <item name="acreditacion" type="b2602c69:ProjectViewProjectNode" />
               <item name="acreditacion" type="462c0819:PsiDirectoryNode" />
               <item name="resoluciones" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="acreditacion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="acreditacion" type="462c0819:PsiDirectoryNode" />
-              <item name="resoluciones" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -270,19 +280,20 @@
       <workItem from="1559522900392" duration="9027000" />
       <workItem from="1559615690789" duration="20547000" />
       <workItem from="1560241236510" duration="20649000" />
-      <workItem from="1560825688593" duration="25833000" />
+      <workItem from="1560825688593" duration="28879000" />
+      <workItem from="1561473558271" duration="7756000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81260000" />
+    <option name="totallyTimeSpent" value="92062000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.41608876" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.41409397" />
+      <window_info id="Structure" order="1" side_tool="true" visible="true" weight="0.12080537" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -468,13 +479,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resoluciones/templates/resolucion/inicio.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5020">
-          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resoluciones/templates/resolucion/eliminarresolucion.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -489,30 +493,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resoluciones/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/acreditacion/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="40" column="20" lean-forward="true" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resoluciones/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="57" lean-forward="true" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -526,51 +510,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resoluciones/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="34" column="51" lean-forward="true" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resoluciones/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="40" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resoluciones/templates/resolucion/tablaresolucion.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="59" column="132" selection-start-line="59" selection-start-column="132" selection-end-line="59" selection-end-column="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resoluciones/templates/resolucion/editarresolucion.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resoluciones/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        <state relative-caret-position="200">
+          <caret line="10" column="67" selection-start-line="10" selection-start-column="67" selection-end-line="10" selection-end-column="67" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resoluciones/templates/resolucion/inicio.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="281" column="18" selection-start-line="281" selection-start-column="18" selection-end-line="281" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resoluciones/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="57" lean-forward="true" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resoluciones/templates/resolucion/editarresolucion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resoluciones/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-240">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resoluciones/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-220">
+          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resoluciones/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resoluciones/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+        <state relative-caret-position="420">
+          <caret line="21" column="104" selection-start-line="21" selection-start-column="104" selection-end-line="21" selection-end-column="104" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resoluciones/templates/resolucion/tablaresolucion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="87" column="38" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
         </state>
       </provider>
     </entry>

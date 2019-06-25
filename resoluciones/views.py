@@ -13,8 +13,14 @@ def inicio(request):
 
 def tablaresolucion(request):
     resoluciones = Resolucion.objects.all()
+    resolutivos = Resolutivo.objects.all()
+    considerandos = Considerando.objects.all()
+    expedientes = Expediente.objects.all()
+    dependencias = Dependencia.objects.all()
+    personas = Persona.objects.all()
     return render(request, 'resolucion/tablaresolucion.html',
-                  {'resoluciones': resoluciones})
+                  {'resoluciones': resoluciones,'resolutivos':resolutivos,'considerandos':considerandos,
+                   'expedientes':expedientes,'dependencias':dependencias,'personas':personas})
 
 def nuevoresolucion(request):
     if request.method == "POST":
@@ -32,20 +38,24 @@ def editarresolucion(request):
     if request.method == "POST":
         form = ResolucionForm(request.POST)
         #post_nro = request.POST['nro']
-        #post_nro = request.POST.get('nro',False)
-        if request.POST.get('nro',False) is not None:
+        post_nro = request.POST.get('nro',False)
+        if post_nro is not None:
                 try:
-                    post_nro = request.POST.get('nro',False)
                     res = Resolucion.objects.get(nro_resolucion=post_nro)
-                    form.fields['nro_resolucion'].initial = res.nro_resolucion
-                    form.fields['facultad_resolucion'].initial = res.facultad_resolucion
-                    form.fields['fecha_resolucion'].initial = res.fecha_resolucion.strftime("%Y-%m-%d")
-                    form.fields['link_descarga'].initial = res.link_descarga
-                    form.fields['estado_resolucion'].initial = res.estado_resolucion
-                    form.fields['adjunto_resolucion'].initial = res.adjunto_resolucion
-                    form.fields['tipo_elevacion'].initial = res.tipo_elevacion
+                    res.fecha_resolucion = res.fecha_resolucion.strftime("%Y-%m-%d")
                 except Resolucion.DoesNotExist:
                     res = None
+    else:
+        form = ResolucionForm
+
+    return render(request,'resolucion/editarresolucion.html',{'form':form, 'res':res},)
+
+def resolucionedit(request):
+    if request.method == "POST":
+        post_nro = request.POST.get('nro_resolucion',False)
+        res = Resolucion.objects.get(nro_resolucion=post_nro)
+        res.delete()
+        form = ResolucionForm(request.POST)
         if form.is_valid():
             resolucion = form.save(commit=False)
             resolucion.save()
@@ -53,15 +63,7 @@ def editarresolucion(request):
     else:
         form = ResolucionForm
 
-    return render(request,'resolucion/editarresolucion.html',{'form':form, 'res':res},)
-
-class ResolucionEdit(UpdateView):
-    model = Resolucion
-    form_class = ResolucionForm
-    template_name = 'resolucion/editarresolucion.html'
-
-    def get_success_url(self):
-        return reverse('tablaresolucion')
+    return render(request, 'resolucion/editarresolucion.html', {'form':form})
 
 
 def eliminarresolucion(request):

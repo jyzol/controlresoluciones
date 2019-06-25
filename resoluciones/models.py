@@ -5,9 +5,26 @@ from django.db import models
 
 class Facultad(models.Model):
     FACS = (
+        ('fmsf', 'FMSF'),
+        ('fdcp', 'FDCP'),
+        ('flch', 'FLCH'),
+        ('ffb', 'FFB'),
+        ('fo', 'FO'),
+        ('fedu', 'FEDU'),
+        ('fqiq', 'FQIQ'),
+        ('fmv', 'FMV'),
+        ('fca', 'FCA'),
+        ('fcb', 'FCB'),
+        ('fcc', 'FCC'),
+        ('fce', 'FCE'),
+        ('fcf', 'FCF'),
+        ('fcm', 'FCM'),
+        ('fcs', 'FCS'),
+        ('figmmg', 'FIGMMG'),
         ('fii', 'FII'),
-        ('fiee','FIEE'),
-        ('fisi','FISI')
+        ('fpsi', 'FPSI'),
+        ('fiee', 'FIEE'),
+        ('fisi', 'FISI'),
     )
     id_facultad = models.CharField(max_length=3, primary_key=True)
     nombre_facultad = models.CharField(max_length=100)
@@ -52,8 +69,8 @@ class Resolutivo(models.Model):
     nro_resolutivo = models.IntegerField()
     descripcion_resolutivo = models.TextField()
 
-    def __str__(self):
-        return self.nro_resolucion+" : "+self.nro_resolutivo
+    #def __str__(self):
+    #    return self.nro_resolucion+" : "+self.nro_resolutivo
 
 
 class Considerando(models.Model):
@@ -62,8 +79,8 @@ class Considerando(models.Model):
     nro_considerando = models.IntegerField()
     descripcion_considerando = models.TextField()
 
-    def __str__(self):
-        return self.nro_resolucion+" : "+self.nro_resolutivo
+    #def __str__(self):
+     #   return self.nro_resolucion+" : "+self.nro_resolutivo
 
 
 class Persona(models.Model):
@@ -73,8 +90,8 @@ class Persona(models.Model):
     tipo_persona = models.CharField(max_length=50)
     resoluciones = models.ManyToManyField(Resolucion)
 
-    def __str__(self):
-        return self.apellidos_persona+" "+self.nombre_persona
+    #def __str__(self):
+     #   return self.apellidos_persona+" "+self.nombre_persona
 
 
 class Expediente(models.Model):
@@ -85,8 +102,8 @@ class Expediente(models.Model):
     descripcion_expediente = models.TextField()
     fecha_expediente = models.DateField()
 
-    def __str__(self):
-        return self.nro_expediente
+    #def __str__(self):
+    #    return self.nro_expediente
 
 
 

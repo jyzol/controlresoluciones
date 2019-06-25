@@ -10,37 +10,18 @@
             <h1 class="h3 mb-0 text-gray-800">Editar Resolución Nro {{ res.nro_resolucion }}</h1>
           </div>
           <div class="row">
-
               <div class="col-lg-3"></div>
               <div class="col-lg-6">
-
-                  <form method="POST" action="{% url 'editarresolucion' %}" class="align-items-center form-inline">{% csrf_token %}
+                  <form method="POST" action="{% url 'resolucionedit' %}" class="align-items-center form-inline">{% csrf_token %}
                       {% for field in form %}
                           <div class="form-group">
-                          {% with valor="value:"|add:field.initial %}
-                              {{ field.label_tag }} {{ field|add_class:"form-control m-2"|attr:valor }}
-                          {% endwith %}
+                              {{ field.label_tag }} {{ field|add_class:"form-control m-2" }}
                           </div>
                       {% endfor %}
                       <div class="d-block text-center">
                           <input type="submit" value="Actualizar" class="btn btn-success">
                       </div>
                   </form>
-
-              <!--
-              <form method="POST" action="#" class="align-items-center form-inline">{% csrf_token %}
-                      {% for field in form %}
-                          {{ field.errors }}
-                          <div class="form-group">
-                              {{ field.label_tag }} {{ field|add_class:"form-control m-2" }}
-                          </div>
-                      {% endfor %}
-                      <div class="d-block text-center">
-                          <input type="submit" value="Ingresar" class="btn btn-success">
-                      </div>
-
-                  </form>
-                  -->
               </div>
               <div class="col-lg-3"></div>
           </div>
@@ -49,8 +30,7 @@
     <!-- /.container-fluid -->
 
     <script type="text/javascript">
-        document.getElementById('id_descripcion_resolucion').value = '{{ res.descripcion_resolucion }}'
-        document.getElementById('id_observacion_resolucion').value = '{{ res.observacion_resolucion }}'
+        document.getElementById('id_nro_resolucion').value = '{{ res.nro_resolucion }}'
         arr = document.getElementsByTagName('option')
         for(var i=0;i<arr.length;i++){
            if(arr[i].innerHTML==='{{ res.facultad_resolucion }}') {
@@ -58,6 +38,13 @@
                arr[i].selected=true
            }
         }
+        document.getElementById('id_fecha_resolucion').value = '{{ res.fecha_resolucion }}'
+        document.getElementById('id_link_descarga').value = '{{ res.link_descarga }}'
+        document.getElementById('id_estado_resolucion').value = '{{ res.estado_resolucion }}'
+        document.getElementById('id_descripcion_resolucion').value = '{{ res.descripcion_resolucion }}'
+        document.getElementById('id_observacion_resolucion').value = '{{ res.observacion_resolucion }}'
+        document.getElementById('id_adjunto_resolucion').value = '{{ res.adjunto_resolucion }}'
+        document.getElementById('id_tipo_elevacion').value = '{{ res.tipo_elevacion }}'
     </script>
 
 {% endblock %}
