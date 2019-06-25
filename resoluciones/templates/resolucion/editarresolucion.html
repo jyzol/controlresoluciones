@@ -38,6 +38,7 @@
                arr[i].selected=true
            }
         }
+        document.getElementById('id_fecha_resolucion').type = "date";
         document.getElementById('id_fecha_resolucion').value = '{{ res.fecha_resolucion }}'
         document.getElementById('id_link_descarga').value = '{{ res.link_descarga }}'
         document.getElementById('id_estado_resolucion').value = '{{ res.estado_resolucion }}'
