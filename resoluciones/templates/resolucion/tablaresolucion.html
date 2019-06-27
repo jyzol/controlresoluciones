@@ -48,8 +48,28 @@
                       <td>{{ r.descripcion_resolucion }}</td>
                       <td>{{ r.tipo_elevacion }}</td>
                       <td><button type="submit" onclick="obtener('{{ r.nro_resolucion }}')" formaction="{% url 'editarresolucion' %}"  class="btn btn-link"><i class="fas fa-pen fa-xs"></i></button></td>
-                      <td><button type="submit" onclick="obtener('{{ r.nro_resolucion }}')" formaction="{% url 'eliminarresolucion' %}" class="btn btn-link"><i class="fas text-danger fa-trash fa-xs"></i></button></td>
+                      <td id="b{{ r.nro_resolucion }}"><button type="button" class="btn btn-link" data-toggle="modal" data-target="#modal{{ r.nro_resolucion }}"><i class="fas text-danger fa-trash fa-xs"></i></button></td>
                     </tr>
+                      <div class="modal fade" id="modal{{ r.nro_resolucion }}" tabindex="-1" role="dialog" aria-labelledby="modal{{ r.nro_resolucion }}Label" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Confimar eliminación</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                ¿Está seguro que desea eliminar la RD N° {{ r.nro_resolucion }}?
+                              </div>
+                              <div class="modal-footer">
+                                <button type="submit" onclick="obtener('{{ r.nro_resolucion }}')" formaction="{% url 'eliminarresolucion' %}" class="btn btn-danger">Eliminar</button>
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
                       </tbody>
                       <tbody id="des{{ r.nro_resolucion }}" class="collapse">
                       <tr class="table-secondary">
