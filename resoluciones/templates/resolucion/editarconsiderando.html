@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %} Considerandos - Editar {% endblock %}
+{% load widget_tweaks %}
+{% block content %}
+    {% load staticfiles %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Editar Considerando {{ con.nro_considerando }} de la RD N° {{ con.resolucion_considerando }}</h1>
+          </div>
+          <div class="row">
+              <div class="col-lg-3"></div>
+              <div class="col-lg-6">
+                  <form method="POST" action="{% url 'considerandoedit' %}" class="align-items-center form-inline">{% csrf_token %}
+                      {% for field in form %}
+                          <div class="form-group">
+                              {{ field.label_tag }} {{ field|add_class:"form-control m-2" }}
+                          </div>
+                      {% endfor %}
+                      <input type="hidden" name="idcon" id="idcon" value="{{ con.id_considerando }}">
+                      <div class="d-block text-center">
+                          <input type="submit" value="Actualizar" class="btn btn-success">
+                      </div>
+                  </form>
+              </div>
+              <div class="col-lg-3"></div>
+          </div>
+        </div>
 
-</body>
-</html>
+    <!-- /.container-fluid -->
+
+    <script type="text/javascript">
+        document.getElementById('id_nro_considerando').value = '{{ con.nro_considerando }}'
+        document.getElementById('id_descripcion_considerando').value = '{{ con.descripcion_considerando }}'
+    </script>
+
+{% endblock %}
+{% block scripts %}
+<!-- Page level plugins -->
+  <script src="{% static 'resoluciones/vendor/chart.js/Chart.min.js' %}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{% static 'resoluciones/js/demo/chart-area-demo.js' %}"></script>
+  <script src="{% static 'resoluciones/js/demo/chart-pie-demo.js' %}"></script>
+{% endblock %}

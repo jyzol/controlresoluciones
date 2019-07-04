@@ -93,14 +93,57 @@ def tablaconsiderando(request):
 
 
 def nuevoconsiderando(request):
-    return render(request,'resolucion/nuevoconsiderando.html')
+    if request.method == "POST":
+        form = ConsiderandoForm(request.POST)
+        if form.is_valid():
+            considerando = form.save(commit=False)
+            considerando.save()
+            return redirect('tablaresolucion')
+    else:
+        form = ConsiderandoForm
+
+    return render(request, 'resolucion/nuevoconsiderando.html', {'form': form})
 
 
 def editarconsiderando(request):
-    return render(request,'resolucion/editarconsiderando.html')
+    if request.method == "POST":
+        form = ConsiderandoForm(request.POST)
+        post_idcon = request.POST.get('idcon', False)
+        if post_idcon is not None:
+            try:
+                con = Considerando.objects.get(id_considerando=post_idcon)
+            except Considerando.DoesNotExist:
+                con = None
+    else:
+        form = ConsiderandoForm
 
+    return render(request, 'resolucion/editarconsiderando.html', {'form': form, 'con': con},)
 
-'resolutivo'
+def considerandoedit(request):
+    if request.method == "POST":
+        post_idcon = request.POST.get('idcon', False)
+        con = Considerando.objects.get(id_considerando=post_idcon)
+        con.nro_considerando = request.POST.get('nro_considerando',False)
+        con.descripcion_considerando = request.POST.get('descripcion_considerando',False)
+        con.save()
+        return redirect('tablaresolucion')
+
+    return render(request, 'resolucion/editarconsiderando.html',)
+
+def eliminarconsiderando(request):
+    if request.method == "POST":
+        post_idcon = request.POST['idcon']
+        if post_idcon is not None:
+                try:
+                    cons = Considerando.objects.get(id_considerando=post_idcon)
+                    cons.delete()
+                except Considerando.DoesNotExist:
+                    cons = None
+        return redirect('tablaresolucion')
+    else:
+        return redirect('tablaresolucion')
+
+#resolutivo
 def tablaresolutivo(request):
     resolutivos = Resolutivo.objects.all()
     return render(request, 'resolucion/tablaresolutivo.html',

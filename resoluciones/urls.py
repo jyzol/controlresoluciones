@@ -15,6 +15,8 @@ urlpatterns = [
     path('considerando/tabla', tablaconsiderando, name='tablaconsiderando'),
     path('considerando/nuevo', nuevoconsiderando, name='nuevoconsiderando'),
     path('considerando/editar', editarconsiderando, name='editarconsiderando'),
+    path('considerando/eliminar', editarconsiderando, name='eliminarconsiderando'),
+    path('considerando/edit', considerandoedit, name='considerandoedit'),
 
     path('resolutivo/tabla', tablaresolutivo, name='tablaresolutivo'),
     path('resolutivo/nuevo', nuevoresolutivo, name='nuevoresolutivo'),

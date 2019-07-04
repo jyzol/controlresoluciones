@@ -1,5 +1,6 @@
 from django import forms
 from .models import Resolucion
+from .models import Considerando
 
 class ResolucionForm(forms.ModelForm):
     class Meta:
@@ -9,6 +10,13 @@ class ResolucionForm(forms.ModelForm):
                   'estado_resolucion','descripcion_resolucion',
                   'observacion_resolucion','adjunto_resolucion',
                   'tipo_elevacion')
+
+
+class ConsiderandoForm(forms.ModelForm):
+    class Meta:
+        model = Considerando
+        fields = ('nro_considerando','descripcion_considerando')
+
 
 
 

@@ -39,6 +39,7 @@
                   </thead>
 
                   <input class="d-none" type="text" name="nro" id="nro" value="">
+                    <input class="d-none" type="text" name="idcon" id="idcon" value="">
                   {% for r in resoluciones %}
                       <tbody>
                     <tr class="clickable" data-toggle="collapse" data-target="#des{{ r.nro_resolucion }}">
@@ -47,8 +48,8 @@
                       <td>{{ r.fecha_resolucion }}</td>
                       <td>{{ r.descripcion_resolucion }}</td>
                       <td>{{ r.tipo_elevacion }}</td>
-                      <td><button type="submit" onclick="obtener('{{ r.nro_resolucion }}')" formaction="{% url 'editarresolucion' %}"  class="btn btn-link"><i class="fas fa-pen fa-xs"></i></button></td>
-                      <td id="b{{ r.nro_resolucion }}"><button type="button" class="btn btn-link" data-toggle="modal" data-target="#modal{{ r.nro_resolucion }}"><i class="fas text-danger fa-trash fa-xs"></i></button></td>
+                      <td><button type="submit" onclick="obtenerRes('{{ r.nro_resolucion }}')" formaction="{% url 'editarresolucion' %}"  class="btn btn-link"><i class="fas fa-pen fa-xs"></i></button></td>
+                      <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#modal{{ r.nro_resolucion }}"><i class="fas text-danger fa-trash fa-xs"></i></button></td>
                     </tr>
                       <div class="modal fade" id="modal{{ r.nro_resolucion }}" tabindex="-1" role="dialog" aria-labelledby="modal{{ r.nro_resolucion }}Label" aria-hidden="true">
                           <div class="modal-dialog" role="document">
@@ -63,19 +64,20 @@
                                 ¿Está seguro que desea eliminar la RD N° {{ r.nro_resolucion }}?
                               </div>
                               <div class="modal-footer">
-                                <button type="submit" onclick="obtener('{{ r.nro_resolucion }}')" formaction="{% url 'eliminarresolucion' %}" class="btn btn-danger">Eliminar</button>
+                                <button type="submit" onclick="obtenerRes('{{ r.nro_resolucion }}')" formaction="{% url 'eliminarresolucion' %}" class="btn btn-danger">Eliminar</button>
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                               </div>
                             </div>
                           </div>
                         </div>
-
                       </tbody>
                       <tbody id="des{{ r.nro_resolucion }}" class="collapse">
                       <tr class="table-secondary">
                           <td>Elemento</td>
                           <td>Número</td>
                           <td colspan="3">Descripción</td>
+                          <td><a href="{% url 'nuevoconsiderando' %}" class="btn btn-link"><i class="fas fa-plus"></i></a></td>
+
                       </tr>
                       {% for cons in considerandos %}
                           {% if cons.resolucion_considerando.nro_resolucion == r.nro_resolucion %}
@@ -83,7 +85,28 @@
                             <td>Considerando</td>
                             <td>{{ cons.nro_considerando }}</td>
                             <td colspan="3">{{ cons.descripcion_considerando }}</td>
-                      </tr>
+                            <td><button type="submit" onclick="obtenerCon('{{ cons.id_considerando }}')" formaction="{% url 'editarconsiderando' %}"  class="btn btn-link"><i class="fas fa-pen fa-xs"></i></button></td>
+                            <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalcon{{ cons.id_considerando }}"><i class="fas text-danger fa-trash fa-xs"></i></button></td>
+                          </tr>
+                              <div class="modal fade" id="modalcon{{ cons.id_considerando }}" tabindex="-1" role="dialog" aria-labelledby="modalcon{{ cons.id_considerando }}Label" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Confimar eliminación</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    ¿Está seguro que desea eliminar el considerando {{ cons.nro_considerando }} la RD N° {{ cons.resolucion_considerando.nro_resolucion }}?
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="submit" onclick="obtenerRes('{{ cons.id_considerando }}')" formaction="{% url 'eliminarconsiderando' %}" class="btn btn-danger">Eliminar</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           {% endif %}
                           {% endfor %}
                       <tr class="table-secondary">
@@ -93,6 +116,7 @@
                           <td>Descripción</td>
                           <td>Fecha</td>
                       </tr>
+
                       {% for exp in expedientes %}
                           {% if exp.resolucion_expediente.nro_resolucion == r.nro_resolucion %}
                           <tr>
@@ -118,6 +142,9 @@
                       </tr>
                           {% endif %}
                           {% endfor %}
+                      <tr class="table-primary">
+                          <td colspan="7"></td>
+                      </tr>
                       </tbody>
                   {% endfor %}
                 </table>
@@ -129,10 +156,15 @@
         </div>
         <!-- /.container-fluid -->
     <script type="text/javascript">
-        function obtener(idr){
+        function obtenerRes(idr){
             a = document.getElementById(idr);
             b = document.getElementById('nro');
             b.value = a.innerHTML;
+        }
+        function obtenerCon(idc){
+            //a = document.getElementById(idc);
+            b = document.getElementById('idcon');
+            b.value = idc;
         }
     </script>
 {% endblock %}
