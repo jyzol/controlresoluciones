@@ -1,6 +1,7 @@
 from django import forms
-from .models import Resolucion
+from .models import Resolucion, Expediente
 from .models import Considerando
+from .models import Resolutivo
 
 class ResolucionForm(forms.ModelForm):
     class Meta:
@@ -15,7 +16,25 @@ class ResolucionForm(forms.ModelForm):
 class ConsiderandoForm(forms.ModelForm):
     class Meta:
         model = Considerando
-        fields = ('nro_considerando','descripcion_considerando')
+        fields = ('resolucion_considerando','nro_considerando',
+                  'descripcion_considerando')
+
+
+class ResolutivoForm(forms.ModelForm):
+    class Meta:
+        model = Resolutivo
+        fields = ('resolucion_resolutivo','nro_resolutivo',
+                  'descripcion_resolutivo')
+
+
+class ExpedienteForm(forms.ModelForm):
+    class Meta:
+        model = Expediente
+        fields = ('nro_expediente','resolucion_expediente',
+                  'fecha_expediente','facultad_expediente',
+                  'dependencia_expediente','descripcion_expediente')
+
+
 
 
 

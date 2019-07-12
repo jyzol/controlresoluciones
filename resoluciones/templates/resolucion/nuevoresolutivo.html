@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %} Resolutivos - Insertar {% endblock %}
+{% load widget_tweaks %}
+{% block content %}
+    {% load staticfiles %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Agregar Resolutivo</h1>
+          </div>
+          <div class="row">
 
-</body>
-</html>
+              <div class="col-lg-3"></div>
+              <div class="col-lg-6">
+
+                  <form method="POST" action="#" class="align-items-center form-inline">{% csrf_token %}
+                      {% for field in form %}
+                          {{ field.errors }}
+                          <div class="form-group">
+                              {{ field.label_tag }} {{ field|add_class:"form-control m-2" }}
+                          </div>
+                      {% endfor %}
+                      <div class="d-block text-center">
+                          <input type="submit" value="Ingresar" class="btn btn-success">
+                      </div>
+
+                  </form>
+              </div>s
+              <div class="col-lg-3"></div>
+          </div>
+
+        </div>
+    <!-- /.container-fluid -->
+    <script type="text/javascript">
+
+    </script>
+{% endblock %}
+{% block scripts %}
+<!-- Page level plugins -->
+  <script src="{% static 'resoluciones/vendor/chart.js/Chart.min.js' %}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{% static 'resoluciones/js/demo/chart-area-demo.js' %}"></script>
+  <script src="{% static 'resoluciones/js/demo/chart-pie-demo.js' %}"></script>
+{% endblock %}

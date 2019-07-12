@@ -32,6 +32,13 @@
 
     <script type="text/javascript">
         document.getElementById('id_nro_considerando').value = '{{ con.nro_considerando }}'
+        arr = document.getElementsByTagName('option')
+        for(var i=0;i<arr.length;i++){
+           if(arr[i].innerHTML==='{{ con.resolucion_considerando.nro_resolucion }}') {
+               arr[0].selected=false
+               arr[i].selected=true
+           }
+        }
         document.getElementById('id_descripcion_considerando').value = '{{ con.descripcion_considerando }}'
     </script>
 

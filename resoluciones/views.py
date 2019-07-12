@@ -123,6 +123,7 @@ def considerandoedit(request):
     if request.method == "POST":
         post_idcon = request.POST.get('idcon', False)
         con = Considerando.objects.get(id_considerando=post_idcon)
+        con.resolucion_considerando = Resolucion.objects.get(nro_resolucion=request.POST.get('resolucion_considerando',False))
         con.nro_considerando = request.POST.get('nro_considerando',False)
         con.descripcion_considerando = request.POST.get('descripcion_considerando',False)
         con.save()
@@ -151,11 +152,119 @@ def tablaresolutivo(request):
 
 
 def nuevoresolutivo(request):
-    return render(request,'resolucion/nuevoresolutivo.html')
+    if request.method == "POST":
+        form = ResolutivoForm(request.POST)
+        if form.is_valid():
+            resolutivo = form.save(commit=False)
+            resolutivo.save()
+            return redirect('tablaresolucion')
+    else:
+        form = ResolutivoForm
+
+    return render(request, 'resolucion/nuevoresolutivo.html', {'form': form})
 
 
 def editarresolutivo(request):
-    return render(request,'resolucion/editarconsiderando.html')
+    if request.method == "POST":
+        form = ResolutivoForm(request.POST)
+        post_idrst = request.POST.get('idrst', False)
+        if post_idrst is not None:
+            try:
+                rst = Resolutivo.objects.get(id_resolutivo=post_idrst)
+            except Resolutivo.DoesNotExist:
+                rst = None
+    else:
+        form = ResolutivoForm
+    return render(request,'resolucion/editarresolutivo.html', {'form':form, 'rst':rst})
+
+def resolutivoedit(request):
+    if request.method == "POST":
+        post_idrst = request.POST.get('idrst', False)
+        rst = Resolutivo.objects.get(id_resolutivo=post_idrst)
+        rst.resolucion_resolutivo = Resolucion.objects.get(nro_resolucion=request.POST.get('resolucion_resolutivo',False))
+        rst.nro_resolutivo = request.POST.get('nro_resolutivo',False)
+        rst.descripcion_resolutivo = request.POST.get('descripcion_resolutivo',False)
+        rst.save()
+        return redirect('tablaresolucion')
+
+    return render(request, 'resolucion/editarresolutivo.html',)
+
+def eliminarresolutivo(request):
+    if request.method == "POST":
+        post_idrst = request.POST['idrst']
+        if post_idrst is not None:
+                try:
+                    rst = Resolutivo.objects.get(id_resolutivo=post_idrst)
+                    rst.delete()
+                except Resolutivo.DoesNotExist:
+                    rst = None
+        return redirect('tablaresolucion')
+    else:
+        return redirect('tablaresolucion')
+
+
+'expediente'
+def tablaexpediente(request):
+    expedientes = Expediente.objects.all()
+    return render(request, 'resolucion/tablaexpediente.html',
+                  {'expedientes': expedientes})
+
+
+def nuevoexpediente(request):
+    if request.method == "POST":
+        form = ExpedienteForm(request.POST)
+        if form.is_valid():
+            expediente = form.save(commit=False)
+            expediente.save()
+            return redirect('tablaresolucion')
+    else:
+        form = ExpedienteForm
+
+    return render(request, 'resolucion/nuevoexpediente.html', {'form': form})
+
+
+def editarexpediente(request):
+    if request.method == "POST":
+        form = ExpedienteForm(request.POST)
+        post_idexp = request.POST.get('idexp', False)
+        if post_idexp is not None:
+            try:
+                exp = Expediente.objects.get(nro_expediente=post_idexp)
+                exp.fecha_expediente = exp.fecha_expediente.strftime("%Y-%m-%d")
+            except Expediente.DoesNotExist:
+                exp = None
+    else:
+        form = ExpedienteForm
+    return render(request, 'resolucion/editarexpediente.html', {'form': form, 'exp': exp})
+
+
+def expedienteedit(request):
+    if request.method == "POST":
+        post_idexp = request.POST.get('idexp', False)
+        exp = Expediente.objects.get(nro_expediente=post_idexp)
+        exp.nro_expediente = request.POST.get('nro_expediente',False)
+        exp.resolucion_expediente = Resolucion.objects.get(nro_resolucion=request.POST.get('resolucion_expediente',False))
+        exp.fecha_expediente = request.POST.get('fecha_expediente',False)
+        exp.facultad_expediente = Facultad.objects.get(id_facultad=request.POST.get('facultad_expediente',False))
+        exp.dependencia_expediente = Dependencia.objects.get(id_dependencia=request.POST.get('dependencia_expediente',False))
+        exp.descripcion_expediente = request.POST.get('descripcion_expediente',False)
+        exp.save()
+        return redirect('tablaresolucion')
+
+    return render(request, 'resolucion/editarexpediente.html',)
+
+def eliminarexpediente(request):
+    if request.method == "POST":
+        post_idexp = request.POST['idexp']
+        if post_idexp is not None:
+                try:
+                    exp = Expediente.objects.get(nro_expediente=post_idexp)
+                    exp.delete()
+                except Expediente.DoesNotExist:
+                    exp = None
+        return redirect('tablaresolucion')
+    else:
+        return redirect('tablaresolucion')
 
 
 'dependencia'
@@ -171,21 +280,6 @@ def nuevodependencia(request):
 
 def editardependencia(request):
     return render(request,'resolucion/editardependencia.html')
-
-
-'expediente'
-def tablaexpediente(request):
-    expedientes = Expediente.objects.all()
-    return render(request, 'resolucion/tablaexpediente.html',
-                  {'expedientes': expedientes})
-
-
-def nuevoexpediente(request):
-    return render(request,'resolucion/nuevoexpediente.html')
-
-
-def editarexpediente(request):
-    return render(request,'resolucion/editarexpediente.html')
 
 
 'facultad'

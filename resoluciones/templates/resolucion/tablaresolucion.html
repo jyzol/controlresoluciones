@@ -38,8 +38,10 @@
                     </tr>
                   </thead>
 
-                  <input class="d-none" type="text" name="nro" id="nro" value="">
+                    <input class="d-none" type="text" name="nro" id="nro" value="">
                     <input class="d-none" type="text" name="idcon" id="idcon" value="">
+                    <input class="d-none" type="text" name="idrst" id="idrst" value="">
+                    <input class="d-none" type="text" name="idexp" id="idexp" value="">
                   {% for r in resoluciones %}
                       <tbody>
                     <tr class="clickable" data-toggle="collapse" data-target="#des{{ r.nro_resolucion }}">
@@ -101,7 +103,7 @@
                                     ¿Está seguro que desea eliminar el considerando {{ cons.nro_considerando }} la RD N° {{ cons.resolucion_considerando.nro_resolucion }}?
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="submit" onclick="obtenerRes('{{ cons.id_considerando }}')" formaction="{% url 'eliminarconsiderando' %}" class="btn btn-danger">Eliminar</button>
+                                    <button type="submit" onclick="obtenerCon('{{ cons.id_considerando }}')" formaction="{% url 'eliminarconsiderando' %}" class="btn btn-danger">Eliminar</button>
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                   </div>
                                 </div>
@@ -115,6 +117,7 @@
                           <td>Dependencia</td>
                           <td>Descripción</td>
                           <td>Fecha</td>
+                          <td><a href="{% url 'nuevoexpediente' %}" class="btn btn-link"><i class="fas fa-plus"></i></a></td>
                       </tr>
 
                       {% for exp in expedientes %}
@@ -125,13 +128,35 @@
                             <td>{{ exp.facultad_expediente }} - {{ exp.dependencia_expediente }}</td>
                               <td>{{ exp.descripcion_expediente }}</td>
                             <td>{{ exp.fecha_expediente }}</td>
-                      </tr>
+                          <td><button type="submit" onclick="obtenerExp('{{ exp.nro_expediente }}')" formaction="{% url 'editarexpediente' %}"  class="btn btn-link"><i class="fas fa-pen fa-xs"></i></button></td>
+                            <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalexp{{ exp.nro_expediente }}"><i class="fas text-danger fa-trash fa-xs"></i></button></td>
+                          </tr>
+                              <div class="modal fade" id="modalexp{{ exp.nro_expediente }}" tabindex="-1" role="dialog" aria-labelledby="modalexp{{ exp.nro_expediente }}Label" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Confimar eliminación</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    ¿Está seguro que desea eliminar el expediente N° {{ exp.nro_expediente }} proveniente de {{ exp.facultad_expediente }} - {{ exp.dependencia_expediente }} que origina la RD N° {{ exp.resolucion_expediente.nro_resolucion }}?
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="submit" onclick="obtenerRst('{{ resolu.id_resolutivo }}')" formaction="{% url 'eliminarresolutivo' %}" class="btn btn-danger">Eliminar</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           {% endif %}
                           {% endfor %}
                       <tr class="table-secondary">
                           <td>Elemento</td>
                           <td>Número</td>
                           <td colspan="3">Descripción</td>
+                          <td><a href="{% url 'nuevoresolutivo' %}" class="btn btn-link"><i class="fas fa-plus"></i></a></td>
                       </tr>
                         {% for resolu in resolutivos %}
                           {% if resolu.resolucion_resolutivo.nro_resolucion == r.nro_resolucion %}
@@ -139,7 +164,28 @@
                             <td>Resolutivo</td>
                             <td>{{ resolu.nro_resolutivo }}</td>
                             <td colspan="3">{{ resolu.descripcion_resolutivo }}</td>
-                      </tr>
+                            <td><button type="submit" onclick="obtenerRst('{{ resolu.id_resolutivo }}')" formaction="{% url 'editarresolutivo' %}"  class="btn btn-link"><i class="fas fa-pen fa-xs"></i></button></td>
+                            <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalrst{{ resolu.id_resolutivo }}"><i class="fas text-danger fa-trash fa-xs"></i></button></td>
+                            </tr>
+                              <div class="modal fade" id="modalrst{{ resolu.id_resolutivo }}" tabindex="-1" role="dialog" aria-labelledby="modalrst{{ resolu.id_resolutivo }}Label" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Confimar eliminación</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    ¿Está seguro que desea eliminar el resolutivo {{ resolu.nro_resolutivo }} la RD N° {{ resolu.resolucion_resolutivo.nro_resolucion }}?
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="submit" onclick="obtenerRst('{{ resolu.id_resolutivo }}')" formaction="{% url 'eliminarresolutivo' %}" class="btn btn-danger">Eliminar</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           {% endif %}
                           {% endfor %}
                       <tr class="table-primary">
@@ -162,9 +208,16 @@
             b.value = a.innerHTML;
         }
         function obtenerCon(idc){
-            //a = document.getElementById(idc);
             b = document.getElementById('idcon');
             b.value = idc;
+        }
+        function obtenerRst(idrs){
+            b = document.getElementById('idrst');
+            b.value = idrs;
+        }
+        function obtenerExp(idex){
+            b = document.getElementById('idexp');
+            b.value = idex;
         }
     </script>
 {% endblock %}
