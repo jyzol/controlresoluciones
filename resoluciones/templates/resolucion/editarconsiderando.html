@@ -12,10 +12,10 @@
           <div class="row">
               <div class="col-lg-3"></div>
               <div class="col-lg-6">
-                  <form method="POST" action="{% url 'considerandoedit' %}" class="align-items-center form-inline">{% csrf_token %}
+                  <form method="POST" action="{% url 'considerandoedit' %}" class="d-block form-inline">{% csrf_token %}
                       {% for field in form %}
-                          <div class="form-group">
-                              {{ field.label_tag }} {{ field|add_class:"form-control m-2" }}
+                          <div class="form-group row">
+                              {{ field.label_tag }} {{ field|add_class:"form-control m-2 col-sm-6" }}
                           </div>
                       {% endfor %}
                       <input type="hidden" name="idcon" id="idcon" value="{{ con.id_considerando }}">
@@ -40,14 +40,17 @@
            }
         }
         document.getElementById('id_descripcion_considerando').value = '{{ con.descripcion_considerando }}'
+        arrs = document.getElementsByTagName('label')
+        for(var i=0;i<arr.length;i++){
+            arrs[i].classList.add("col-sm-4")
+            arrs[i].classList.add("justify-content-start")
+        }
     </script>
 
 {% endblock %}
 {% block scripts %}
-<!-- Page level plugins -->
-  <script src="{% static 'resoluciones/vendor/chart.js/Chart.min.js' %}"></script>
+    <!-- Page level plugins -->
 
-  <!-- Page level custom scripts -->
-  <script src="{% static 'resoluciones/js/demo/chart-area-demo.js' %}"></script>
-  <script src="{% static 'resoluciones/js/demo/chart-pie-demo.js' %}"></script>
+    <!-- Page level custom scripts -->
+
 {% endblock %}

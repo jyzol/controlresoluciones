@@ -22,6 +22,27 @@ def tablaresolucion(request):
                   {'resoluciones': resoluciones,'resolutivos':resolutivos,'considerandos':considerandos,
                    'expedientes':expedientes,'dependencias':dependencias,'personas':personas})
 
+
+def detalleresolucion(request):
+    if request.method == "POST":
+        post_nro = request.POST.get('nro',False)
+        if post_nro is not None:
+                try:
+                    resolucion = Resolucion.objects.get(nro_resolucion=post_nro)
+                    considerando = Considerando.objects.filter(resolucion_considerando=resolucion)
+                    expediente = Expediente.objects.filter(resolucion_expediente=resolucion)
+                    resolutivo = Resolutivo.objects.filter(resolucion_resolutivo=resolucion)
+                    persona = Persona.objects.filter(resoluciones=resolucion)
+                except Resolucion.DoesNotExist:
+                    resolucion = None
+    else:
+        resolucion = None
+
+    return render(request, 'resolucion/detalleresolucion.html',
+                  {'resolucion':resolucion,'considerando':considerando,'expediente':expediente,'resolutivo':resolutivo,
+                   'persona':persona})
+
+
 def nuevoresolucion(request):
     if request.method == "POST":
         form = ResolucionForm(request.POST)
@@ -275,11 +296,57 @@ def tabladependencia(request):
 
 
 def nuevodependencia(request):
-    return render(request,'resolucion/nuevodependencia.html')
+    if request.method == "POST":
+        form = DependenciaForm(request.POST)
+        if form.is_valid():
+            dependencia = form.save(commit=False)
+            dependencia.save()
+            return redirect('tablaresolucion')
+    else:
+        form = DependenciaForm
+
+    return render(request, 'resolucion/nuevodependencia.html', {'form': form})
 
 
 def editardependencia(request):
-    return render(request,'resolucion/editardependencia.html')
+    if request.method == "POST":
+        form = DependenciaForm(request.POST)
+        post_iddep = request.POST.get('iddep', False)
+        if post_iddep is not None:
+            try:
+                dep = Dependencia.objects.get(id_dependencia=post_iddep)
+            except Dependencia.DoesNotExist:
+                dep = None
+    else:
+        form = DependenciaForm
+    return render(request, 'resolucion/editardependencia.html', {'form': form, 'dep': dep})
+
+def dependenciaedit(request):
+    if request.method == "POST":
+        post_iddep = request.POST.get('iddep', False)
+        dep = Dependencia.objects.get(id_dependencia=post_iddep)
+        dep.id_dependencia = request.POST.get('id_depedencia',False)
+        dep.facultad_dependencia = Facultad.objects.get(id_facultad=request.POST.get('facultad_expediente',False))
+        dep.nombre_dependencia = request.POST.get('nombre_dependencia',False)
+        dep.abreviatura_dependencia = request.POST.get('abreviatura_dependencia',False)
+        dep.save()
+        return redirect('tablaresolucion')
+
+    return render(request, 'resolucion/editardependencia.html', )
+
+
+def eliminardependencia(request):
+    if request.method == "POST":
+        post_iddep = request.POST['iddep']
+        if post_iddep is not None:
+            try:
+                dep = Dependencia.objects.get(id_dependencia=post_iddep)
+                dep.delete()
+            except Dependencia.DoesNotExist:
+                dep = None
+        return redirect('tablaresolucion')
+    else:
+        return redirect('tablaresolucion')
 
 
 'facultad'
@@ -296,10 +363,55 @@ def tablapersona(request):
 
 
 def nuevopersona(request):
-    return render(request,'resolucion/nuevopersona.html')
+    if request.method == "POST":
+        form = PersonaForm(request.POST)
+        if form.is_valid():
+            persona = form.save(commit=False)
+            persona.save()
+            return redirect('tablaresolucion')
+    else:
+        form = PersonaForm
+
+    return render(request, 'resolucion/nuevopersona.html', {'form': form})
 
 
 def editarpersona(request):
-    return render(request,'resolucion/editarpersona.html')
+    if request.method == "POST":
+        form = PersonaForm(request.POST)
+        post_idper = request.POST.get('idper', False)
+        if post_idper is not None:
+            try:
+                per = Persona.objects.get(dni=post_idper)
+            except Persona.DoesNotExist:
+                per = None
+    else:
+        form = PersonaForm
+    return render(request, 'resolucion/editarpersona.html', {'form': form, 'per': per})
 
+def personaedit(request):
+    if request.method == "POST":
+        post_idper = request.POST.get('idper', False)
+        per = Persona.objects.get(dni=post_idper)
+        per.dni = request.POST.get('dni',False)
+        per.nombre_persona = request.POST.get('nombre_persona',False)
+        per.apellidos_persona = request.POST.get('apellidos_persona',False)
+        per.tipo_persona = request.POST.get('tipo_persona',False)
+        per.resoluciones = request.POST.get('resoluciones',False)
+        per.save()
+        return redirect('tablaresolucion')
+
+    return render(request, 'resolucion/editarresolutivo.html',)
+
+def eliminarpersona(request):
+    if request.method == "POST":
+        post_idper = request.POST['idper']
+        if post_idper is not None:
+                try:
+                    per = Persona.objects.get(dni=post_idper)
+                    per.delete()
+                except Persona.DoesNotExist:
+                    per = None
+        return redirect('tablaresolucion')
+    else:
+        return redirect('tablaresolucion')
 

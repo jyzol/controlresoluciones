@@ -1,7 +1,5 @@
 from django import forms
-from .models import Resolucion, Expediente
-from .models import Considerando
-from .models import Resolutivo
+from .models import Resolucion, Expediente, Persona, Dependencia, Considerando, Resolutivo
 
 class ResolucionForm(forms.ModelForm):
     class Meta:
@@ -34,6 +32,19 @@ class ExpedienteForm(forms.ModelForm):
                   'fecha_expediente','facultad_expediente',
                   'dependencia_expediente','descripcion_expediente')
 
+
+class PersonaForm(forms.ModelForm):
+    class Meta:
+        model = Persona
+        fields = ('dni','nombre_persona','apellidos_persona',
+                  'tipo_persona','resoluciones')
+
+
+class DependenciaForm(forms.ModelForm):
+    class Meta:
+        model = Dependencia
+        fields = ('id_dependencia','facultad_dependencia',
+                  'nombre_dependencia','abreviatura_dependencia')
 
 
 

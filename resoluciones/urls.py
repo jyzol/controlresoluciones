@@ -10,6 +10,7 @@ urlpatterns = [
     path('resolucion/editar', editarresolucion, name='editarresolucion'),
     path('resolucion/eliminar', eliminarresolucion, name='eliminarresolucion'),
     path('resolucion/edit', resolucionedit, name='resolucionedit'),
+    path('resolucion/detalle', detalleresolucion, name='detalleresolucion'),
 
     path('considerando/tabla', tablaconsiderando, name='tablaconsiderando'),
     path('considerando/nuevo', nuevoconsiderando, name='nuevoconsiderando'),
@@ -38,4 +39,6 @@ urlpatterns = [
     path('persona/tabla', tablapersona, name='tablapersona'),
     path('persona/nuevo', nuevopersona, name='nuevopersona'),
     path('persona/editar', editarpersona, name='editarpersona'),
+    path('persona/edit', personaedit, name='personaedit'),
+    path('persona/eliminar', eliminarpersona, name='eliminarpersona'),
 ]

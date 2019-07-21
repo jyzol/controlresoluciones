@@ -1,10 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %} Dependencias - Editar {% endblock %}
+{% load widget_tweaks %}
+{% block content %}
+    {% load staticfiles %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Editar Dependencia {{ dep.facultad_dependencia.abreviatura_facultad }}-{{ dep.abreviatura_dependencia }}</h1>
+          </div>
+          <div class="row">
+              <div class="col-lg-3"></div>
+              <div class="col-lg-6">
+                  <form method="POST" action="{% url 'dependenciaedit' %}" class="d-block form-inline">{% csrf_token %}
+                      {% for field in form %}
+                          <div class="form-group row">
+                              {{ field.label_tag }} {{ field|add_class:"form-control m-2 col-sm-6" }}
+                          </div>
+                      {% endfor %}
+                      <div class="d-block text-center">
+                          <input type="submit" value="Actualizar" class="btn btn-success">
+                      </div>
+                  </form>
+              </div>
+              <div class="col-lg-3"></div>
+          </div>
+        </div>
 
-</body>
-</html>
+    <!-- /.container-fluid -->
+
+    <script type="text/javascript">
+        document.getElementById('id_dependencia').value = '{{ dep.id_dependencia }}'
+        arr = document.getElementsByTagName('option')
+        for(var i=0;i<arr.length;i++){
+           if(arr[i].innerHTML==='{{ dep.facultad_dependencia }}') {
+               arr[0].selected=false
+               arr[i].selected=true
+           }
+        }
+        document.getElementById('id_nombre_dependencia').value = '{{ dep.nombre_dependencia }}'
+        document.getElementById('id_abreviatura_dependencia').value = '{{ dep.abreviatura_dependencia }}'
+        arrs = document.getElementsByTagName('label')
+        for(var i=0;i<arrs.length;i++){
+            arrs[i].classList.add("col-sm-4")
+            arrs[i].classList.add("justify-content-start")
+        }
+    </script>
+
+{% endblock %}
+{% block scripts %}
+    <!-- Page level plugins -->
+
+    <!-- Page level custom scripts -->
+
+{% endblock %}
